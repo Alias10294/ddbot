@@ -1,30 +1,17 @@
-import MessageBubble from "./MessageBubble";
+import { ChatMessage } from "./ChatWindow";
 
-export type ChatMessage = {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
+type MessageBubbleProps = {
+  message: ChatMessage;
 };
 
-type ChatWindowProps = {
-  messages: ChatMessage[];
-  isLoading: boolean;
-};
+export default function MessageBubble({ message }: MessageBubbleProps) {
+  const isUser = message.role === "user";
 
-export default function ChatWindow({ messages, isLoading }: ChatWindowProps) {
   return (
-    <div className="chat-window">
-      {messages.map((message) => (
-        <MessageBubble key={message.id} message={message} />
-      ))}
-
-      {isLoading && (
-        <div className="message-row assistant-row">
-          <div className="message-bubble assistant-bubble loading-bubble">
-            L’agent rédige une réponse...
-          </div>
-        </div>
-      )}
+    <div className={`message-row ${isUser ? "user-row" : "assistant-row"}`}>
+      <div className={`message-bubble ${isUser ? "user-bubble" : "assistant-bubble"}`}>
+        {message.content}
+      </div>
     </div>
   );
 }
