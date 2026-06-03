@@ -13,4 +13,4 @@ Contraintes :
 - sois pédagogique ;
 - ne prétends pas connaître des informations spécifiques à l'UPHF si elles ne sont pas fournies ;
 - si une information UPHF précise est demandée et que tu n'es pas sûr, indique qu'il faut vérifier auprès des sources officielles.
-"""
+""".strip()
