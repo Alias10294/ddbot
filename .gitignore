@@ -47,6 +47,7 @@ pnpm-debug.log*
 # RAG / generated data
 data/vector_store/
 data/processed/
+data/ollama/
 *.index
 *.faiss
 *.pkl
