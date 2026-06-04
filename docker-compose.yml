@@ -21,14 +21,28 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+  langflow:
+    image: langflowai/langflow:latest
+    ports:
+      - "7860:7860"
+    environment:
+      - LANGFLOW_AUTO_LOGIN=false
+      - LANGFLOW_SUPERUSER=admin
+      - LANGFLOW_SUPERUSER_PASSWORD=admin
+      - LANGFLOW_NEW_USER_IS_ACTIVE=true
+    volumes:
+      - langflow-data:/app/langflow
+    depends_on:
+      - ollama
   ollama:
     image: ollama/ollama
     container_name: security-agent-ollama
     ports:
       - "11434:11434"
     volumes:
-      - ollama_data:/root/.ollama
+      - ollama-data:/root/.ollama
     restart: unless-stopped
 
 volumes:
-  ollama_data:
+  langflow-data:
+  ollama-data:
