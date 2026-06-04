@@ -8,16 +8,12 @@ class OllamaClient:
     def generate(self, messages: list[Message]) -> str:
         response = requests.post(
             f"{settings.ollama_base_url}/api/chat",
-            json={
-                "model": settings.ollama_model,
+            json    = {
+                "model"   : settings.ollama_model,
                 "messages": messages,
-                "stream": False,
+                "stream"  : False,
             },
-            timeout=120,
-        )
-
+            timeout = 120)
         response.raise_for_status()
 
-        data = response.json()
-
-        return data["message"]["content"]
+        return response.json()["message"]["content"]
