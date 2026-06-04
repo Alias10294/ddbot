@@ -14,12 +14,12 @@ class Chatbot:
 
         messages: list[Message] = [
             {
-                "role": "system",
+                "role"   : "system",
                 "content": SYSTEM_PROMPT,
             },
             *history,
             {
-                "role": "user",
+                "role"   : "user",
                 "content": message,
             }
         ]
