@@ -13,8 +13,13 @@ Ensuite, il suffira de lancer le conteneur avec la commande:
 ```text
 > docker compose up
 ```
+L'application fonctionne grâce à un modèle performant du cloud de Ollama, donc il faudra se connecter:
+```text
+> docker exec -it ddbot-ollama ollama signin
+```
+Delà, il faudra suivre le lien affiché et se connecter.
 
-L'application sera ensuite disponible à l'adresse:
+Une fois ces étapes passées, l'application devrait être pleinement fcontionnelle et sera disponible à l'adresse:
 ```text
 http://localhost:5173
 ```

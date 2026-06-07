@@ -1,5 +1,6 @@
 services:
   frontend:
+    container_name: ddbot-frontend
     build: ./frontend
     ports:
       - "5173:5173"
@@ -7,6 +8,7 @@ services:
       - backend
 
   backend:
+    container_name: ddbot-backend
     build: ./backend
     ports:
       - "8000:8000"
@@ -20,6 +22,7 @@ services:
       - langflow
 
   langflow:
+    container_name: ddbot-langflow
     build: ./langflow
     ports:
       - "7860:7860"
@@ -35,6 +38,7 @@ services:
         condition: service_completed_successfully
 
   ollama:
+    container_name: ddbot-ollama
     image: ollama/ollama:latest
     ports:
       - "11434:11434"
@@ -42,11 +46,12 @@ services:
       - ./data/ollama:/root/.ollama
       
   ollama-pull:
+    container_name: ddbot-ollama-pull
     image: ollama/ollama:latest
     environment:
       OLLAMA_HOST: http://ollama:11434
     entrypoint: ["/bin/sh", "-c"]
     command:
-      - until ollama list >/dev/null 2>&1; do echo 'Waiting for Ollama...'; sleep 2; done; ollama pull llama3.2
+      - until ollama list >/dev/null 2>&1; do echo 'Waiting for Ollama...'; sleep 2; done; ollama pull gpt-oss:20b-cloud
     depends_on:
       - ollama
