@@ -163,8 +163,9 @@ input {
   font-size: 14px;
 }
 
-/* 💬 BULLES DE TEXTE */
+/* BULLES DE TEXTE */
 .message-bubble {
+  font-style: italic;
   max-width: 70%;
   padding: 12px 16px;
   border-radius: 16px;
