@@ -2,7 +2,7 @@
 ## Installation
 ### Exigences
 L'application DDBot est contenerisée avec Docker, donc pour utiliser l'application, il vous faudra donc Docker Desktop.
-Elle utilise également Ollama et Langflow pour son modèle
+Elle utilise également Ollama et Langflow pour son modèle, donc créer un compte Ollama sera nécessaire.
 
 ### Procédé d'installation
 Pour récupérer l'application, placez vous dans le dossier de votre choix et clonez le repository:
@@ -19,7 +19,7 @@ L'application fonctionne grâce à un modèle performant du cloud de Ollama, don
 ```
 Delà, il faudra suivre le lien affiché et se connecter.
 
-Une fois ces étapes passées, l'application devrait être pleinement fcontionnelle et sera disponible à l'adresse:
+Une fois ces étapes passées, l'application devrait être pleinement fonctionnelle et sera disponible à votre adresse:
 ```text
 http://localhost:5173
 ```
