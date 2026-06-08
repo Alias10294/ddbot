@@ -3,5 +3,7 @@ uvicorn[standard]
 pydantic
 pydantic-settings
 python-dotenv
-openai
 requests
+bs4
+sentence_transformers
+numpy
