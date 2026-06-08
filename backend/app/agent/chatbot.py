@@ -1,3 +1,5 @@
+from urllib.parse import quote, unquote, urlsplit, urlunsplit, parse_qsl, urlencode
+
 from app.db.conversations import InMemoryConversationStore
 from app.llm.client       import LangflowClient
 from app.rag.classerRag   import selectionner_chunk
@@ -10,27 +12,15 @@ class Chatbot:
 
 
     def answer(self, conversation_id: str, message: str) -> str:
-        print("=== CHAT REQUEST ===")
-        print("MESSAGE:", message)
-
         chunks = selectionner_chunk(message)
-
-        print("=== RAG OK ===")
-        print("CHUNKS:", len(chunks))
 
         augmented_message = self._build_augmented_message(
             message = message,
             chunks  = chunks)
 
-        print("=== AUGMENTED MESSAGE OK ===")
-        print("LENGTH:", len(augmented_message))
-        print("PREVIEW:", augmented_message[:1000])
-
         answer = self.llm.generate(
             message    = augmented_message,
             session_id = conversation_id)
-
-        print("=== LLM OK ===")
 
         self.conversations.add_message(
             conversation_id = conversation_id,
@@ -45,9 +35,31 @@ class Chatbot:
         return answer
 
 
+    def _encode_url_for_prompt(self, url: str | None) -> str:
+        if not url:
+            return "source inconnue"
+
+        parts = urlsplit(url)
+
+        if not parts.scheme or not parts.netloc:
+            return url
+
+        encoded_path = quote(unquote(parts.path), safe="/")
+        encoded_query = urlencode(parse_qsl(parts.query), doseq=True)
+
+        return urlunsplit((
+            parts.scheme,
+            parts.netloc,
+            encoded_path,
+            encoded_query,
+            parts.fragment,
+        ))
+
+
     def _build_augmented_message(self, message: str, chunks: list[dict]) -> str:
         contexte = "\n\n".join(
-            f"Source : {chunk.get('url', 'source inconnue')}\n{chunk.get('content', '')}"
+            f"Source : {self._encode_url_for_prompt(chunk.get('url'))}\n"
+            f"{chunk.get('content', '')}"
             for chunk in chunks
         )
 
