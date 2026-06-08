@@ -20,7 +20,7 @@ export default function ChatWindow({ messages, isLoading }: ChatWindowProps) {
 
       {isLoading && (
         <div className="message-row assistant-row">
-          <div className="message-bubble assistant-bubble loading-bubble">
+          <div className="message-bubble_thinking assistant-bubble loading-bubble">
             L'agent rédige une réponse...
           </div>
         </div>
