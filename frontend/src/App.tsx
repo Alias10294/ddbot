@@ -72,7 +72,11 @@ export default function App() {
   return (
     <main className="app">
       <aside className="sidebar">
-        <h1>Agent de Sécurité</h1>
+        <div className="sidebar-header">
+          <img src="/src/assets/logo.png" alt="Dédé" className="sidebar-logo" />
+          <h1>DD Bot</h1>
+        </div>
+        
         <p>Chatbot de sensibilisation cybersécurité</p>
 
         <button className="new-chat-button" onClick={handleNewConversation}>
@@ -87,8 +91,8 @@ export default function App() {
 
       <section className="chat-panel">
         <header className="chat-header">
-          <h2>Agent de Sécurité UPHF</h2>
-          <p>Posez une question sur la cybersécurité.</p>
+          <h2>DD Bot</h2>
+          <p>Posez une question concernant la cybersécurité. Renseignez-vous à propos de la sécurité numérique mise en place à l'UPHF.</p>
         </header>
 
         <ChatWindow messages={messages} isLoading={isLoading} />
