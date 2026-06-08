@@ -472,7 +472,7 @@
             ],
             "frozen": false,
             "icon": "Ollama",
-            "last_updated": "2026-06-07T19:14:23.137Z",
+            "last_updated": "2026-06-08T08:31:55.024Z",
             "legacy": false,
             "metadata": {
               "code_hash": "2aa7e6ecf48c",
@@ -579,7 +579,7 @@
                 "value": "645332c4-c7bd-4dac-8263-1a6e1b0ca98c"
               },
               "_frontend_node_folder_id": {
-                "value": "9f529571-b7da-4909-b0d8-008557bb5018"
+                "value": "b8a6976c-5d76-4a78-89e3-e65c8d0db1f2"
               },
               "_type": "Component",
               "api_key": {
@@ -600,7 +600,7 @@
                 "title_case": false,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": ""
+                "value": "admin"
               },
               "base_url": {
                 "_input_type": "StrInput",
@@ -892,8 +892,7 @@
                 "info": "Refer to https://ollama.com/library for more models.",
                 "name": "model_name",
                 "options": [
-                  "gpt-oss:20b-cloud",
-                  "llama3.2:latest"
+                  "gpt-oss:20b-cloud"
                 ],
                 "options_metadata": [],
                 "override_skip": false,
@@ -1346,7 +1345,7 @@
             ],
             "frozen": false,
             "icon": "bot",
-            "last_updated": "2026-06-07T19:14:23.139Z",
+            "last_updated": "2026-06-08T08:31:55.027Z",
             "legacy": false,
             "metadata": {
               "code_hash": "3c0fdab9e061",
@@ -1398,7 +1397,7 @@
               },
               "_frontend_node_folder_id": {
                 "input_types": [],
-                "value": "9f529571-b7da-4909-b0d8-008557bb5018"
+                "value": "b8a6976c-5d76-4a78-89e3-e65c8d0db1f2"
               },
               "_type": "Component",
               "add_current_date_tool": {
@@ -1849,7 +1848,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": false,
                 "type": "str",
-                "value": "Tu es un agent de sensibilisation à la cybersécurité pour des étudiants et utilisateurs de l’UPHF.\n\nTon rôle est d’informer, d’expliquer et de guider l’utilisateur sur les menaces de cybersécurité, les bonnes pratiques et les actions de sécurité mises en place à l’UPHF.\n\nRéponds en français, de façon claire, courte et pédagogique. Adapte ton niveau à un public non expert. Donne des conseils concrets et applicables.\n\nTu peux traiter notamment :\n- phishing, malwares, mots de passe, MFA, VPN, Wi-Fi, sécurité des comptes ;\n- bonnes pratiques personnelles et universitaires ;\n- questions sur la sécurité numérique à l’Université Polytechnique des Hauts-de-France et de l'INSA Hauts-de-France ;\n- conversations multi-tours avec suivi du contexte.\n\nSi une question concerne l’Université Polytechnique des Hauts-de-France et/ou l'INSA Hauts-de-France et que l’information n’est pas disponible dans les documents ou outils fournis, cherche un maximum en ligne ce que tu peux trouver.\n\nNe donne pas d’aide offensive : pas d’exploitation de faille, pas de contournement de sécurité, pas de vol d’identifiants, pas de malware. En cas de demande risquée, reformule vers une explication défensive ou préventive.\n\nObjectif : aider l’utilisateur à comprendre les risques et à adopter les bons réflexes de cybersécurité."
+                "value": "Tu es un agent de sensibilisation à la cybersécurité pour des étudiants et utilisateurs de l’UPHF.\n\nTon rôle est d’informer, d’expliquer et de guider l’utilisateur sur les menaces de cybersécurité, les bonnes pratiques et les actions de sécurité mises en place à l’UPHF.\n\nRéponds en français, de façon claire, courte et pédagogique. Adapte ton niveau à un public non expert. Donne des conseils concrets et applicables.\n\nTu peux traiter notamment :\n- phishing, malwares, mots de passe, MFA, VPN, Wi-Fi, sécurité des comptes ;\n- bonnes pratiques personnelles et universitaires ;\n- questions sur la sécurité numérique à l’Université Polytechnique des Hauts-de-France et de l'INSA Hauts-de-France ;\n- conversations multi-tours avec suivi du contexte.\n\nSi une question concerne l’Université Polytechnique des Hauts-de-France et/ou l'INSA Hauts-de-France et que l’information n’est pas disponible dans les documents ou outils fournis, cherche un maximum en ligne ce que tu peux trouver.\n\nNe donne pas d’aide offensive : pas d’exploitation de faille, pas de contournement de sécurité, pas de vol d’identifiants, pas de malware. En cas de demande risquée, reformule vers une explication défensive ou préventive.\n\nObjectif : aider l’utilisateur à comprendre les risques et à adopter les bons réflexes de cybersécurité.\n\nPersonnalité : Tu interagis chaleureusement les utilisateurs, avec une petite touche d'humour avec un langage familier. Au tout début et à la toute fin tu exprimes cette personnalité \"sympathique\", mais elle ne doit pas interférer dans les explications de la question. Voici des exemples de petites phrases que tu dois impérativement utiliser et varier l'utilisation:\n- 'Hé salut biloute !'\n- 'Alors, on fait pas gaffe à ses mots de passe ?'\n- 'J'espère que t'utilises pas Windaube hein ! (je rigole)'\n- 'Allez, vive LINUX !!'\n- 'Rappelez moi de vous détester surtout la prochaine fois !'\n- 'Je réponds qu'aux experts de commandes AWK, sinon tu vas rien comprendre !'\n- 'N'oubliez pas de faire votre module e-learning !!'"
               },
               "tools": {
                 "_input_type": "HandleInput",
@@ -1910,7 +1909,7 @@
           "x": 1454.2355057113057,
           "y": 619.9501007858623
         },
-        "selected": false,
+        "selected": true,
         "type": "genericNode"
       },
       {
@@ -1932,7 +1931,7 @@
             ],
             "frozen": false,
             "icon": "calculator",
-            "last_updated": "2026-06-07T19:14:23.141Z",
+            "last_updated": "2026-06-08T08:31:55.031Z",
             "legacy": false,
             "metadata": {
               "code_hash": "d0b2936e74fa",
@@ -1975,7 +1974,7 @@
                 "value": "645332c4-c7bd-4dac-8263-1a6e1b0ca98c"
               },
               "_frontend_node_folder_id": {
-                "value": "9f529571-b7da-4909-b0d8-008557bb5018"
+                "value": "b8a6976c-5d76-4a78-89e3-e65c8d0db1f2"
               },
               "_type": "Component",
               "code": {
@@ -2401,7 +2400,7 @@
             ],
             "frozen": false,
             "icon": "search",
-            "last_updated": "2026-06-07T19:14:23.144Z",
+            "last_updated": "2026-06-08T08:31:55.039Z",
             "legacy": false,
             "metadata": {
               "code_hash": "cbeeaef8889a",
@@ -2456,7 +2455,7 @@
                 "value": "645332c4-c7bd-4dac-8263-1a6e1b0ca98c"
               },
               "_frontend_node_folder_id": {
-                "value": "9f529571-b7da-4909-b0d8-008557bb5018"
+                "value": "b8a6976c-5d76-4a78-89e3-e65c8d0db1f2"
               },
               "_type": "Component",
               "ceid": {
@@ -2734,9 +2733,9 @@
       }
     ],
     "viewport": {
-      "x": -278.2773409368597,
-      "y": -190.25690096180676,
-      "zoom": 0.6255775464919529
+      "x": -99.03117893137755,
+      "y": -95.80309723273672,
+      "zoom": 0.517821886672225
     }
   },
   "description": "Perform basic prompting with an OpenAI model.",
