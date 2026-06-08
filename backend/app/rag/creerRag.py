@@ -2,7 +2,7 @@
 # test git
 # Imports
 import json
-import configRag
+from app.rag import configRag
 import requests
 from bs4 import BeautifulSoup
 from sentence_transformers import SentenceTransformer
@@ -39,19 +39,24 @@ def text_to_chunks(text, chunk_size=configRag.CHUNK_SIZE, overlap=configRag.CHUN
 
     return chunks
 
-def main():
+def creer_rag():
     '''
     à partir des options de configRag, lit chaque URL, récupère le texte,
     le sépare en chunks avec texte, embedding, source et indice
     écrit le résultat dans un jsonl
     '''
+    configRag.DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(configRag.DATA_FILE, "w", encoding="utf-8") as f:
+        pass
+
     liste_liens = configRag.liens_RAG
     nombre_liens = len(liste_liens)
     i=0
     for url in liste_liens:
         url_text = url_to_string_data(url)
         if url_text is None:
-            print(f"Erreur sur le chargement de l'url :{url}")
+            # print(f"Erreur sur le chargement de l'url :{url}")
             i+=1
             continue
         
@@ -71,7 +76,4 @@ def main():
                 f.write(json.dumps(final_chunk, ensure_ascii=False) + "\n")
 
         i+=1
-        print(f"{i}/{nombre_liens} traité :{url}")
-        
-
-main()
+        # print(f"{i}/{nombre_liens} traité :{url}")

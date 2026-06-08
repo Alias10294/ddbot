@@ -1,4 +1,4 @@
-import configRag
+from app.rag import configRag
 import numpy as np
 import json
 from sentence_transformers import SentenceTransformer
@@ -46,7 +46,7 @@ def selectionner_chunk(query):
             embedded_chunks.append(d["embedding"]) 
 
     # On sélectionne les chunks en comparant les embeddings
-    query_vec = model.encode(f"query: {query}", normalize_embeddings=True), # préciser "query" spécialité de multilingual-e5-large
+    query_vec = model.encode(f"query: {query}", normalize_embeddings=True) # préciser "query" spécialité de multilingual-e5-large
     query_vec = np.asarray(query_vec).reshape(1, -1)
     selected = mmr_indice(query_vec, doc_vecs=np.array(embedded_chunks), lambda_=configRag.LAMBDA, top_k=configRag.NUMBER_OF_CHUNK_SELECTED)
 
@@ -68,4 +68,5 @@ def test():
         print(s["url"])
         print(s["content"])
 
-test()
+if __name__ == "__main__":
+    test()
