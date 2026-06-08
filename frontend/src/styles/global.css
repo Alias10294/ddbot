@@ -2,6 +2,15 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary-uphf: #2563eb;       /* Remets ici ton bleu d'origine (ex: #2563eb ou la couleur exacte du logo) */
+  --primary-uphf-hover: #1d4ed8; /* Ta couleur au survol */
+  --bg-app: #fcfaf7;             /* Blanc crème très doux pour le confort visuel */
+  --text-dark: #1e293b;          /* Gris ardoise foncé pour le texte */
+  --sidebar-bg: #111827;         /* Fond sombre d'origine préservé */
+  --border-color: #cbd5e1;       /* Gris clair pour les bordures de tableaux */
+}
+
 body {
   margin: 0;
   font-family:
@@ -11,8 +20,8 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  background: #eef2f7;
-  color: #172033;
+  background: var(--bg-app);
+  color: var(--text-dark);
 }
 
 button,
@@ -26,8 +35,9 @@ input {
   grid-template-columns: 280px 1fr;
 }
 
+/* 📁 SIDEBAR (BARRE LATÉRALE) */
 .sidebar {
-  background: #111827;
+  background: var(--sidebar-bg);
   color: white;
   padding: 24px;
   display: flex;
@@ -38,12 +48,14 @@ input {
 .sidebar h1 {
   margin: 0;
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .sidebar p {
   margin: 0;
-  color: #cbd5e1;
+  color: #94a3b8;
   line-height: 1.4;
+  font-size: 0.9rem;
 }
 
 .new-chat-button {
@@ -51,68 +63,67 @@ input {
   border: none;
   border-radius: 10px;
   padding: 12px 14px;
-  background: #2563eb;
+  background: var(--primary-uphf);
   color: white;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.2s;
 }
 
 .new-chat-button:hover {
-  background: #1d4ed8;
+  background: var(--primary-uphf-hover);
 }
 
 .conversation-info {
   margin-top: auto;
-  padding: 14px;
-  border-radius: 12px;
-  background: #1f2937;
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.conversation-info span {
-  color: #cbd5e1;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  color: #94a3b8;
 }
 
 .conversation-info code {
-  color: #93c5fd;
+  background: #1f2937;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: #f3f4f6;
+  font-family: monospace;
 }
 
+/* 💬 ZONE DE CHAT (PANEL CENTRAL) */
 .chat-panel {
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .chat-header {
-  background: white;
-  border-bottom: 1px solid #dbe3ef;
   padding: 20px 28px;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
 }
 
 .chat-header h2 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
+  color: var(--text-dark);
 }
 
 .chat-header p {
-  margin: 6px 0 0;
+  margin: 4px 0 0;
+  font-size: 0.875rem;
   color: #64748b;
 }
 
-.chat-window {
-  flex: 1;
-  overflow-y: auto;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
+/* LIGNES DE MESSAGES ET LOGOS AVATARS */
 .message-row {
   display: flex;
+  align-items: flex-end; /* 🦶 Aligne impérativement les avatars au pied de la bulle */
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .user-row {
@@ -123,38 +134,123 @@ input {
   justify-content: flex-start;
 }
 
+/* MINI LOGO DU BOT & UTILISATEUR */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.assistant-avatar {
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+
+.assistant-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-avatar {
+  background: #cbd5e1;
+  font-size: 14px;
+}
+
+/* BULLES DE TEXTE */
 .message-bubble {
-  max-width: min(720px, 80%);
-  border-radius: 18px;
-  padding: 14px 16px;
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 0.95rem;
   line-height: 1.5;
-  white-space: pre-wrap;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.message-bubble_thinking {
+  font-style: italic;
+  max-width: 70%;
+  padding: 12px 16px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 .user-bubble {
-  background: #2563eb;
+  background: var(--primary-uphf); /* Couleur UPHF */
   color: white;
-  border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px; /* Effet bulle de BD */
 }
 
 .assistant-bubble {
   background: white;
-  color: #172033;
-  border: 1px solid #dbe3ef;
+  color: var(--text-dark);
+  border: 1px solid #e2e8f0;
   border-bottom-left-radius: 4px;
 }
 
-.loading-bubble {
-  color: #64748b;
-  font-style: italic;
+/* 📝 ELEMENTS GENERES PAR LE MARKDOWN */
+.message-bubble p {
+  margin: 0 0 8px 0;
 }
 
+.message-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.message-bubble strong {
+  font-weight: 700;
+}
+
+.message-bubble ul, 
+.message-bubble ol {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+/* 📊 STYLISATION DES TABLEAUX MARKDOWN (GFM) */
+.message-bubble table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0;
+  font-size: 0.85rem;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.message-bubble th, 
+.message-bubble td {
+  border: 1px solid var(--border-color);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.message-bubble th {
+  background-color: #f1f5f9;
+  font-weight: 600;
+  color: #334155;
+}
+
+.message-bubble tr:nth-child(even) {
+  background-color: #f8fafc; /* Effet zébré pour faciliter la lecture des CVE */
+}
+
+/* ZONE DE SAISIE DE TEXTE (FOOTER) */
 .chat-input-form {
   display: flex;
   gap: 12px;
   padding: 18px 28px;
   background: white;
   border-top: 1px solid #dbe3ef;
+  flex-shrink: 0;
 }
 
 .chat-input {
@@ -163,20 +259,27 @@ input {
   border-radius: 12px;
   padding: 14px 16px;
   outline: none;
+  color: var(--text-dark);
+  transition: border-color 0.15s;
 }
 
 .chat-input:focus {
-  border-color: #2563eb;
+  border-color: var(--primary-uphf);
 }
 
 .send-button {
   border: none;
   border-radius: 12px;
   padding: 0 20px;
-  background: #2563eb;
+  background: var(--primary-uphf);
   color: white;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.15s;
+}
+
+.send-button:hover:not(:disabled) {
+  background: var(--primary-uphf-hover);
 }
 
 .send-button:disabled {
@@ -184,6 +287,7 @@ input {
   background: #94a3b8;
 }
 
+/* RESPONSIVE */
 @media (max-width: 800px) {
   .app {
     grid-template-columns: 1fr;
@@ -196,12 +300,125 @@ input {
   .chat-panel {
     height: 100vh;
   }
+}
 
-  .message-bubble {
-    max-width: 92%;
-  }
+/* Animation fondu apparition des messages */
 
-  .chat-input-form {
-    padding: 14px;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message-row {
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+/* Scrollbar */
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-window::-webkit-scrollbar-track {
+  background: transparent;
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background-color: var(--primary-uphf);
+  border-radius: 20px;
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 28px; 
+}
+
+/* Mise en valeur des blocs markdown*/
+.message-bubble code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #ef4444;
+}
+
+/* Si l'assistant renvoie un gros bloc de code */
+.message-bubble pre code {
+  display: block;
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* SIDEBAR */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; 
+  gap: 12px;               
+  margin-top: 10px;
+}
+
+.sidebar-logo {
+  width:62px;
+  height: 62px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin: 0;              
+}
+
+.sidebar h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: white;
+}
+
+/* QUICK REPLIES */
+.chat-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.quick-replies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 28px 20px 28px; /* Aligné avec le padding des messages */
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.quick-reply-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--text-dark);
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.quick-reply-card:hover {
+  border-color: var(--primary-uphf);
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.quick-reply-card:active {
+  transform: translateY(0);
 }

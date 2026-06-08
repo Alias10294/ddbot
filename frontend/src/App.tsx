@@ -19,6 +19,13 @@ export default function App() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // QUICK REPLIES -- Propositions de questions pré-remplies pour guider l'utilisateur
+  const quickReplies = [
+    "Comment reconnaître un e-mail de phishing ?",
+    "Quelles sont les bonnes pratiques pour un mot de passe fort ?",
+    "Quelles sont les actions de l'UPHF en cybersécurité ?"
+  ];
+
   const canSend = useMemo(() => !isLoading, [isLoading]);
 
   async function handleSend(content: string) {
@@ -72,7 +79,11 @@ export default function App() {
   return (
     <main className="app">
       <aside className="sidebar">
-        <h1>Agent de Sécurité</h1>
+        <div className="sidebar-header">
+          <img src="/src/assets/logo.png" alt="Dédé" className="sidebar-logo" />
+          <h1>DD Bot</h1>
+        </div>
+        
         <p>Chatbot de sensibilisation cybersécurité</p>
 
         <button className="new-chat-button" onClick={handleNewConversation}>
@@ -87,11 +98,29 @@ export default function App() {
 
       <section className="chat-panel">
         <header className="chat-header">
-          <h2>Agent de Sécurité UPHF</h2>
-          <p>Posez une question sur la cybersécurité.</p>
+          <h2>DD Bot</h2>
+          <p>Posez une question concernant la cybersécurité. Renseignez-vous à propos de la sécurité numérique mise en place à l'UPHF.</p>
         </header>
 
-        <ChatWindow messages={messages} isLoading={isLoading} />
+        {/* Conteneur intermédiaire pour organiser l'affichage fenêtré */}
+        <div className="chat-body">
+          <ChatWindow messages={messages} isLoading={isLoading} />
+          
+          {/* QUICK REPLIES -- S'affichent uniquement s'il n'y a que le message d'accueil et pas de chargement */}
+          {messages.length === 1 && !isLoading && (
+            <div className="quick-replies-container">
+              {quickReplies.map((reply, index) => (
+                <button
+                  key={index}
+                  className="quick-reply-card"
+                  onClick={() => handleSend(reply)}
+                >
+                  {reply}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         <ChatInput onSend={handleSend} disabled={!canSend} />
       </section>
