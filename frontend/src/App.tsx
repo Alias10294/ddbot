@@ -19,6 +19,13 @@ export default function App() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
+  // QUICK REPLIES -- Propositions de questions pré-remplies pour guider l'utilisateur
+  const quickReplies = [
+    "Comment reconnaître un e-mail de phishing ?",
+    "Quelles sont les bonnes pratiques pour un mot de passe fort ?",
+    "Quelles sont les actions de l'UPHF en cybersécurité ?"
+  ];
+
   const canSend = useMemo(() => !isLoading, [isLoading]);
 
   async function handleSend(content: string) {
@@ -95,7 +102,25 @@ export default function App() {
           <p>Posez une question concernant la cybersécurité. Renseignez-vous à propos de la sécurité numérique mise en place à l'UPHF.</p>
         </header>
 
-        <ChatWindow messages={messages} isLoading={isLoading} />
+        {/* Conteneur intermédiaire pour organiser l'affichage fenêtré */}
+        <div className="chat-body">
+          <ChatWindow messages={messages} isLoading={isLoading} />
+          
+          {/* QUICK REPLIES -- S'affichent uniquement s'il n'y a que le message d'accueil et pas de chargement */}
+          {messages.length === 1 && !isLoading && (
+            <div className="quick-replies-container">
+              {quickReplies.map((reply, index) => (
+                <button
+                  key={index}
+                  className="quick-reply-card"
+                  onClick={() => handleSend(reply)}
+                >
+                  {reply}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
 
         <ChatInput onSend={handleSend} disabled={!canSend} />
       </section>

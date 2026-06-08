@@ -371,3 +371,44 @@ input {
   line-height: 1.1;
   color: white;
 }
+
+/* QUICK REPLIES */
+.chat-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.quick-replies-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 28px 20px 28px; /* Aligné avec le padding des messages */
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.quick-reply-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px 18px;
+  text-align: left;
+  color: var(--text-dark);
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.quick-reply-card:hover {
+  border-color: var(--primary-uphf);
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.quick-reply-card:active {
+  transform: translateY(0);
+}
