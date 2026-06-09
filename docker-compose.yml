@@ -52,6 +52,6 @@ services:
       OLLAMA_HOST: http://ollama:11434
     entrypoint: ["/bin/sh", "-c"]
     command:
-      - until ollama list >/dev/null 2>&1; do echo 'Waiting for Ollama...'; sleep 2; done; ollama pull gpt-oss:20b-cloud
+      - until ollama list >/dev/null 2>&1; do echo 'Waiting for Ollama...'; sleep 2; done; ollama pull gpt-oss:120b-cloud
     depends_on:
       - ollama

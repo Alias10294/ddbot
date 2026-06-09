@@ -948,7 +948,7 @@
                 "info": "Refer to https://ollama.com/library for more models.",
                 "name": "model_name",
                 "options": [
-                  "gpt-oss:20b-cloud"
+                  "gpt-oss:120b-cloud"
                 ],
                 "options_metadata": [],
                 "override_skip": false,
@@ -963,7 +963,7 @@
                 "trace_as_metadata": true,
                 "track_in_telemetry": true,
                 "type": "str",
-                "value": "gpt-oss:20b-cloud"
+                "value": "gpt-oss:120b-cloud"
               },
               "num_ctx": {
                 "_input_type": "IntInput",
