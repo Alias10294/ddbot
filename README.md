@@ -17,9 +17,12 @@ L'application fonctionne grâce à un modèle performant du cloud de Ollama, don
 ```text
 > docker exec -it ddbot-ollama ollama signin
 ```
-Delà, il faudra suivre le lien affiché et se connecter.
+De là, il faudra suivre le lien affiché et se connecter.
 
 Une fois ces étapes passées, l'application devrait être pleinement fonctionnelle et sera disponible à votre adresse:
 ```text
 http://localhost:5173
 ```
+
+### Disclaimer
+Chaque service de l'application, particulièrement Langflow, peut prendre plusieurs minutes à être opérationnel. Avant cela, l'interface graphique sera disponible, mais l'agent ne sera pas prêt.
