@@ -1,4 +1,4 @@
-# DDBot: Le Chatbot Interactif (que pour les utilisateurs Linux)
+# DDBot: Le Chatbot Interactif
 ## Installation
 ### Exigences
 L'application DDBot est contenerisée avec Docker, donc pour utiliser l'application, il vous faudra donc Docker Desktop.
